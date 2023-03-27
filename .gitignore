@@ -48,4 +48,3 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
-__pycache__/tstat_weather.cpython-310.pyc
