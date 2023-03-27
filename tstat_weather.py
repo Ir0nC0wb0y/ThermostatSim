@@ -19,11 +19,6 @@ def interp_1d(x1,x2,y1,y2,x_in,absolute=False):
     y = y1 + (x-x1) * ((y2-y1)/(x2-x1))
     return y
 
-class WeatherData:
-    def __init__(self):
-        self.data = []
-        print("building weather Data")
-
 class weather:
     def __init__(self):
         self.data = []
@@ -60,10 +55,10 @@ class weather:
         # T = 1 day or 86400 seconds
         wxB = (2 * pi) / (86400)
         wxC = pi
-        print("wxA " + str(wxA))
-        print("wxB " + str(wxB))
-        print("wxC " + str(wxC))
-        print("wxD " + str(wxD))
+        #print("wxA " + str(wxA))
+        #print("wxB " + str(wxB))
+        #print("wxC " + str(wxC))
+        #print("wxD " + str(wxD))
         return [wxA,wxB,wxC,wxD]
 
     def CalcTemp(self,time):
@@ -75,17 +70,10 @@ class weather:
         else :
             tempH = interp_1d(0,1,self.temp_max[self.month-1],self.temp_max[self.month],month_f)
             tempL = interp_1d(0,1,self.temp_min[self.month-1],self.temp_min[self.month],month_f)
-        print("High: " + str(tempH) + " Low: " + str(tempL))
+        #print("High: " + str(tempH) + " Low: " + str(tempL))
         # y = A * cos(Bx + C) + D
         [wxA,wxB,wxC,wxD] = self.CalcSinParam(tempH,tempL)
         self.temp = wxA * np.cos(wxB * day_seconds - wxC) + wxD
-        print()
-        print("Time of day (seconds): " + str(day_seconds))
-        print("Calculated Temp: " + str(self.temp))
+        #print()
+        #print("Time of day (seconds): " + str(day_seconds))
         return self.temp
-
-
-
-w = weather()
-#w.CalcTemp(time.time())
-w.CalcTemp(1671978321)
