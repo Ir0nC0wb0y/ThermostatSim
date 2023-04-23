@@ -15,7 +15,7 @@ class home_state:
 class home:
     def __init__(self,air_vol,initial_temp):
         self.state = home_state()
-        self.air_mass = air_vol
+        self.air_mass = air_vol * 0.0283168 * air_density # ft3 * m3/ft3 * g/m3 = g
         print("Air mass: " + str(self.air_mass))
         self.temp = initial_temp
     
