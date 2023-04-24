@@ -21,7 +21,6 @@ def interp_1d(x1,x2,y1,y2,x_in,absolute=False):
 
 class weather:
     def __init__(self):
-        self.data = []
         self.temp = 0
         self.temp_max = [78, 81, 83, 87, 91, 93, 94, 94, 93, 89, 84, 80]
         self.temp_min = [36, 40, 45, 52, 60, 67, 69, 69, 65, 54, 43, 39]
@@ -61,7 +60,7 @@ class weather:
         #print("wxD " + str(wxD))
         return [wxA,wxB,wxC,wxD]
 
-    def CalcTemp(self,time):
+    def CalcTemp(self,time,display=0):
         [month_f,day_seconds] = self.interpolate_time(time)
         # Get high/low Temp for the day
         if self.month == 12:
@@ -76,4 +75,6 @@ class weather:
         self.temp = wxA * np.cos(wxB * day_seconds - wxC) + wxD
         #print()
         #print("Time of day (seconds): " + str(day_seconds))
-        return self.temp
+        if display == 1:
+            print("Outside Temp: " + str(self.temp))
+        return
