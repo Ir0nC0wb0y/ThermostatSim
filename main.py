@@ -19,9 +19,9 @@ f = open("sim-run.csv","w")
 f.write(file_header + "\n")
 sim_time = 0
 sim_period = 10
-while sim_time < 604800:
+while sim_time < 2592000:
     #w.CalcTemp(time.time(),1)
-    w.CalcTemp(1671978321 + sim_time)
+    w.CalcTemp(1689396268 + sim_time)
     tstat.update(h.state.temp)
     ac.update(tstat.state_ac)
     h.update(w.temp,ac.state_ac)
